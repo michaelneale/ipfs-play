@@ -37,6 +37,12 @@ async function main() {
     })
   }
 
+
+  // Subscribe to the "boop" topic
+  ipfs.pubsub.subscribe("woot", (msg) => {
+    console.log(`Received message: ${msg.data.toString()}`)
+  })  
+
   // Publish a message to the "boop" topic
   await ipfs.pubsub.publish(TOPIC, Buffer.from('Hello, world!'))
 

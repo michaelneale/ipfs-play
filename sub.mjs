@@ -19,10 +19,16 @@ async function main() {
     }
   })
 
+  console.log("OK connected to IPFS")
+
   // Subscribe to the "boop" topic
   ipfs.pubsub.subscribe(TOPIC, (msg) => {
     console.log(`Received message: ${msg.data.toString()}`)
+    ipfs.pubsub.publish("woot", Buffer.from('Hello, world to you!'))
   })
+
+  console.log("OK subscribed to topic")
+
 }
 
 main()
